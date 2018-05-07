@@ -7,18 +7,26 @@
 </head>
 <body>
 
-        <h1>Белый или чёрный</h1>
-        <h2>Какой вариант &laquo;лучше&raquo; выглядит?</h2>
+    <h1>Белый или чёрный</h1>
+    <h2>Какой вариант &laquo;лучше&raquo; выглядит?</h2>
 
     <div id="container">
         <div id="black" class="logo">
             <img src="/static/logo-pos.png" />
             <div id="guess-black" class="circle">&nbsp;</div>
+            <p class="message"></p>
         </div>
         <div id="white" class="logo">
             <img src="/static/logo-neg.png" />
             <div id="guess-white" class="circle">&nbsp;</div>
+            <p class="message"></p>
         </div>
     </div>
+
+    <p>Итерация: <span id="iteration">0</span></p>
+
+    <script src="/static/jquery-3.3.1.min.js"></script>
+    <script src="/static/main.js"></script>
+
     </body>
 </html>

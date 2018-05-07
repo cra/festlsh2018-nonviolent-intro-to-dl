@@ -48,10 +48,6 @@ img {
     }
 }
 
-#black {
-    background-color: #ffaabb;
-}
-
 .logo {
     object-fit: scale-down;
     padding-top: 25%;
@@ -59,9 +55,19 @@ img {
     height: 500px;
 }
 
-#white {
-    background-color: #bbaa00;
+.message {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
 }
+
+#black {
+    color: black;
+}
+#white {
+    color: white;
+}
+
 
 #container {
     display: flex;
@@ -77,11 +83,9 @@ img {
 }
 
 #guess-black {
-    color: #fff;
-    background: #000;
+    background: black;
 }
 
 #guess-white {
-    color: #000;
-    background: #fff;
+    background: white;
 }
