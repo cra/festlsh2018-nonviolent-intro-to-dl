@@ -63,6 +63,7 @@ img {
 
 #black {
     color: black;
+    border-right-style: dashed;
 }
 #white {
     color: white;
@@ -72,6 +73,7 @@ img {
 #container {
     display: flex;
     flex-direction: row;
+    width: 720px;
 }
 
 .circle {

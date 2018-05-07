@@ -1,12 +1,14 @@
-var whiteBlock = document.getElementById("white")
-var blackBlock = document.getElementById("black")
-var iterationText = document.getElementById("iteration")
-
 $(function() {
-    getNewColors()
+    $('#white').on('click', handleWhiteClick)
+    $('#black').on('click', handleBlackClick)
 
-    $("#white").on('click', handleWhiteClick)
-    $("#black").on('click', handleBlackClick)
+    // hide color hex value and guesses
+    $('.message').hide()
+    $('.circle').hide()
+
+    $('#showColorIdCheckbox').on('change', handleShowColorCheckboxClick)
+
+    getNewColors()
 });
 
 
@@ -19,16 +21,24 @@ function getNewColors() {
 }
 
 function setColors(input) {
-    $(whiteBlock).css({"background": input["white"]})
-    $("#white > .message").text(input["white"])
+    $('#container').css({"background": input["color"]})
 
-    $(blackBlock).css({"background": input["black"]})
-    $("#black> .message").text(input["black"])
+    $(".message").text(input["color"])
 
-    $(iterationText).text(input["iteration"])
+    $('#iteration').text(input["iteration"])
+    $('#prob-white').text(input["white_probability"])
+    $('#prob-black').text(input["black_probability"])
+    if (input["guess"] === "white") {
+        $("#guess-white").show()
+        $("#guess-black").hide()
+    } else {
+        $("#guess-white").hide()
+        $("#guess-black").show()
+    }
 }
 
-function _handleClick(label, input) {
+function _handleClick(label) {
+    input = $('#container').css("background-color")
     $.ajax({
         url: "/json/color.pick",
         type: "post",
@@ -39,11 +49,17 @@ function _handleClick(label, input) {
 }
 
 function handleWhiteClick() {
-    color = $(whiteBlock).css("background-color")
-    _handleClick("white", color)
+    _handleClick("white")
 }
 
 function handleBlackClick() {
-    color = $(blackBlock).css("background-color")
-    _handleClick("black", color)
+    _handleClick("black")
+}
+
+function handleShowColorCheckboxClick() {
+    if ($(this).is(':checked')) {
+        $('.message').show();
+    } else {
+        $('.message').hide();
+    }
 }
