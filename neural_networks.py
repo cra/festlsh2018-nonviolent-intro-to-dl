@@ -7,6 +7,10 @@ def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 
+def sigmoid_prime(s):
+    return s * (1 - s)
+
+
 class NeuralNetwork(object):
     """ Create a neural network with three layers: input, hidden, output """
     def __init__(self, n_inputs, n_hidden, n_output, learning_rate=0.2):
@@ -32,8 +36,8 @@ class NeuralNetwork(object):
         Z = sigmoid(np.dot(H, self.w_out))
 
         E = Y - Z
-        dZ = E * Z * (1 - Z)
-        dH = dZ.dot(self.w_out.T) * H * (1 - H)
+        dZ = E * sigmoid_prime(Z)
+        dH = dZ.dot(self.w_out.T) * sigmoid_prime(H)
 
         self.w_hidden += self.learning_rate * np.dot(X.T, dH)
         self.w_out += self.learning_rate * np.dot(H.T, dZ)
