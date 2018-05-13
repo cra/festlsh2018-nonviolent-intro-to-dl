@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Non-violent intro to DL</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+<style>
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+</style>
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+
+
+        <!-- slide 1: название -->
+				<section data-markdown>
+          <textarea data-template>
+          ### Ненасильственное введение в нейронные сети и глубокое обучение
+
+          Игорь Мосягин<br/>мастерская &laquo;Deep Learning&raquo;<br/>
+          <small>http://letnyayashkola.org/deeplearning</small>
+          </textarea>
+        </section>
+
+        <!-- slide 2: intro -->
+				<section data-markdown>
+          <textarea data-template>
+          ### Нюансы
+
+          <ol>
+            <li>В этой лекции много англицизмов</li>
+            <li>Лекция &mdash; вводная</li>
+            <li>Я надеюсь изъясняться понятно</li>
+            <!--<li>$e^{i\pi} + 1 = 0$</li>-->
+          </ol>
+
+          </textarea>
+        </section>
+
+        <section>
+          <section>
+            <h3>Начнём с формулировок</h3>
+
+            <ul>
+              <li> Зачем так много названий?</li>
+              <li> Что такое..
+                <ul>
+                  <li> ..искуственный интеллект?</li>
+                  <li> ..глубокое обучение?</li>
+                  <li> ..машинное обучение?</li>
+                  <li> ..глубокое обучение?</li>
+                </ul>
+              </li>
+              <li> <b>Зачем так много названий?</b></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Тянем за хвост Уробороса</h3>
+
+            <p>Глубокое обучение &mdash; современное применение глубоких нейронных сетей для машинного обучения</p>
+
+            <p>
+            Глубокое обучение &mdash; техника машинного обучения, которая заправляет всей происходящей сейчас революцией в области искуственного интеллекта
+            </p>
+
+            <p><i>вроде одно и то же сказано</i></p>
+
+          </section>
+          <section>
+            <h3>Картинка</h3>
+
+            <img src="img/ai-ml-dl.png"/>
+
+            <p>DL &mdash; способ решать задачи ML</p>
+
+          </section>
+          <section>
+            <h3>Больше пересечений!</h3>
+
+            <img src="img/ai-ml-dl-bigdata-ds.png"/>
+
+            <p>DL невозможен без DS и хороших данных</p>
+
+          </section>
+
+          <section>
+            <img src="img/layers_of_AI_chatbots_that_learn_min.webp"/>
+
+            <small>SRC: <a href="https://blog.ubisend.com/optimise-chatbots/how-to-make-a-chatbot-that-learns">https://blog.ubisend.com/optimise-chatbots/how-to-make-a-chatbot-that-learns</a></small>
+
+          </section>
+        </section>
+
+        <section>
+
+          <section>
+            <h3>Поисковые тренды</h3>
+            <img src="img/trends.svg">
+
+          </section>
+
+          <section>
+            <!--<h3>Кривая Ожиданий</h3>-->
+            <img src="img/hype-cycle-for-emerging-technologies-2017.jpg">
+
+          </section>
+
+          <section>
+            <h3>Почему сейчас стало можно?</h3>
+
+            <ol>
+              <li>Мощности компьютеров позволяют</li>
+              <li>Данных стало много</li>
+              <li>Матчасть дошла до технологий</li>
+            </ol>
+
+            <p>Как следствие, появились доступные &laquo;простым смертным&raquo; технологии для внедрения и использования</p>
+          </section>
+
+          <section>
+            <h3>Почему сейчас это нужно?</h3>
+
+            <p>Последние десять лет мы слезали с компьютеров на мобильные устройства</p>
+
+            <p>Ближайшие десять лет все будут &laquo;перелезать&raquo; на AI-driven технологии</p>
+          </section>
+
+          <section>
+            <h3>Сейчас самое то</h3>
+            <p>&laquo;Три года назад вкладываться в машинное обучение было расточительной тратой времени. Через три года вкладываться в машинное обучение будет
+            поздно&raquo;</p>
+
+            <p><small>Dan Olley в апреле 2016, CTO Elsevier &mdash; один из мастодонтов научной коммуникации</small></p>
+          </section>
+
+        </section>
+
+        <section>
+          <h3>Внезапная интерлюдия!</h3>
+
+          <p>Чтобы дальше продолжать понимать друг друга, надо ввести пару терминов</p>
+
+          <p><small>flipchart: decision matrix</small></p>
+        </section>
+
+        <section>
+          <h3>Всё ещё не проговорили что такое DL</h3>
+
+          <p>Глубокие нейронные сети позволяют хорошо приблизить <b>любую</b> непрерывную функцию</p>
+
+          <p>Значит, что:<br/>
+          A: {есть размеченные данные}<br/>
+          B: {есть хороший механизм их оценки}<br/>
+          A &rarr; B
+          </p>
+
+          <hr/>
+
+          <p>Нейронные сети дают универсальный оцениватель любой непрерывной функции</p>
+        </section>
+
+        <section>
+          <h3>Всё ещё не проговорили что это такое!!!</h3>
+
+          <p>Что это за оценки? О чём речь?</p>
+
+          <p>Зачем вообще оценивать данные?</p>
+
+          <p>Какое обучение у машины?</p>
+        </section>
+
+        <section>
+
+          <img src="img/machine-learning-cheet-sheet.png" />
+
+        </section>
+
+        <section>
+          <h3>Пример с сетью</h3>
+
+          <img src="img/nn.png" />
+
+          <p><small>flipchart: decision nn</small></p>
+
+        </section>
+
+        <section>
+
+          <section>
+            <img src="img/mostly-complete-chart.png" />
+          </section>
+
+          <section>
+            <img src="img/perceptron.png" />
+          </section>
+
+          <section>
+            <img src="img/feedforward.png" />
+          </section>
+
+          <section>
+            <img src="img/deepff.png" />
+          </section>
+
+        </section>
+
+        <section>
+          <h4>А минусы?</h4>
+
+          <small>
+          <p>Нельзя сделать выводы из данных если данных нет</p>
+
+          <p>Выбор архитектуры сети это почти искусство</p>
+
+          <p>Экстраполяция &#8810; интерполяция (не всегда)</p>
+
+          <p>Переобучение поджидает за углом (всегда)</p>
+
+          <p>Вообще нужны неслабые ресурсы (почти всегда)</p>
+          </small>
+
+        </section>
+
+        <!-- slide X: Demo -->
+				<section>
+          <h3>Демо</h3>
+
+          <h4>Контрасто-осведомлённый сервис для выбора иконки к цвету</h4>
+
+          <p>Маленькая задача, для которой не нужны нейронки</p>
+
+          <p>Можно сделать без фреймворков</p>
+
+        </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+        math: {
+          mathjax: 'MathJax/MathJax.js',
+          // https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js
+          //mathjax: 'js/MathJax.2.7.0.js',
+          config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+        },
+        slideNumber: 'c',
+        transition: 'none',
+        center: false,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+    </script>
+  </body>
+</html>
+<!-- vim: tabstop=2 softtabstop=2 shiftwidth=2 textwidth=159
+  /-->
